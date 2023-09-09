@@ -29,14 +29,14 @@ function chooseImage(event) {
 
     const instance = basicLightbox.create(
         `<div class="modal">
-            <img src="${event.target.dataset.source}">
+            <img src="${event.target.dataset.source}" class="openedimg">
         </div>`, {
             onShow:(instance) => {
-                window.addEventListener('keudown', closeModalOnEsc);
+                window.addEventListener('keydown', closeModalOnEsc);
             },
-            inClose(instance) {
-                window.removeEventListener('keydown', closeModalOnEsc)
-            }
+            inClose:(instance) => {
+                window.removeEventListener('keydown', closeModalOnEsc);
+            },
         }
     )
     instance.show();
@@ -46,8 +46,6 @@ function chooseImage(event) {
             instance.close();
         }
     }
-
 };
-
 
 gallery.addEventListener('click', chooseImage);
