@@ -34,6 +34,9 @@ function chooseImage(event) {
             onShow:(instance) => {
                 window.addEventListener('keydown', closeModalOnEsc);
             },
+            onShow: (instance) => {
+                instance.element().querySelector('img.openedimg').onclick = instance.close
+            },
             inClose:(instance) => {
                 window.removeEventListener('keydown', closeModalOnEsc);
             },
